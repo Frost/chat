@@ -2,23 +2,44 @@
 $ ->
   user = ""
   $template = $("#template").removeAttr "id"
-  # $template.remove()
+  $chat =  $('#chat input[name=chat]')
+  $handle = $('#chat input[name=handle]')
+
+  $template.remove()
+
+  getHandle = ->
+    $handle.val()
 
   appendMessage = (data) ->
-    console.log $template.clone()
-      .find(".at").text(data.at).end()
+    time = new Date(data.at)
+    timestamp = "#{time.getHours()}:#{time.getMinutes()}:#{time.getSeconds()}"
+    $template.clone()
+      .find(".at").text(timestamp).end()
       .find(".by").text(data.user).end()
       .find(".msg").text(data.text).end()
       .appendTo("#messages")
 
-  socket = io.connect "localhost"
+    $(window).scrollTop($chat.offset().top)
+
+
+  socket = io.connect "10.0.1.71:3000"
   socket.on "message", appendMessage
+
   $("#chat").on "submit", (event) ->
-    data =
+    data = { text: $chat.val() }
+
+    $chat.val("")
+    appendMessage
+      user: getHandle()
+      text: data.text
       at: new Date
-      user: user
-      text: $("#chat input").val()
-    appendMessage data
-    $("#chat input").val("")
-    console.log data
+
+    socket.emit "message", data
+
     return false
+
+  $handle.on "change", (event) ->
+    user =
+      name: getHandle()
+    console.log user
+    socket.emit "set", user

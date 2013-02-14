@@ -1,12 +1,27 @@
+@import 'nib'
+
 html
 body
   height 100%
 
 body
 pre
+section
   margin 0
   padding 0
   background-color lightgrey
+
+body
+  display box
+  box-align center
+  box-pack stretch
+
+.horizontal 
+  box-orient horizontal
+
+.vertical 
+  box-orient vertical
+
 
 article
   width 90%
@@ -42,3 +57,8 @@ ul
   margin 0
   padding 0
   list-style none
+  box-flex 1 
+
+#chat
+  box-flex 0 
+

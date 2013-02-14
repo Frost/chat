@@ -11,11 +11,12 @@ block content
       nav
         for room in rooms
           a(href="##{room.name}") #{room.name}
-    section
+    section.vertical
       ul#message
         li#template
           span.at 20:23
           span.by Max
           span.msg Hallå Världen
       form#chat
-        input
+        input(name="handle")
+        input(name="chat")
