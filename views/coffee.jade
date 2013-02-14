@@ -1,0 +1,13 @@
+extends layout
+
+append styles
+  link(rel="stylesheet", href="/style/monokai_sublime.css")
+
+append scripts
+  script(src="/javascript/highlight.pack.js")
+  :coffeescript
+    do hljs.initHighlightingOnLoad
+
+block content
+  pre
+    code.coffeescript= source

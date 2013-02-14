@@ -1,0 +1,42 @@
+{
+  "name": "chat", 
+  "version": "0.0.1",
+  "private": true,
+  "main": "run",
+  "author": "Svensk Lånemarknad AB (http://www.lanemarknad.se/)",
+  "contributors": [
+    "Max Nordlund <max.nordlund@lanemarknad.se>"
+  ],
+  "dependencies": {
+    "coffee-script": "1.4.x",
+    "jade": "0.28.x",
+    "marked": "0.2.x",
+    "stylus": "0.32.x",
+    "nib": "0.9.x",
+    "canvas": "1.0.x",
+    "connect": "2.7.x",
+    "express": "3.0.x",
+    "express-jquery": "1.8.x",
+    "socket.io": "0.9.x",
+    "socket.io.sessions": "git+ssh://git@github.com:Svensklanemarknad/Socket.IO.sessions.git#v0.1.0",
+    "passport": "0.1.x",
+    "passport-google": "0.2.x",
+    "mongoose": "3.5.x",
+    "express-mongoose": "0.1.x",
+    "dateformat": "1.0.x-1.2.3",
+    "clone": "0.1.x",
+    "fibrous": "0.2.x",
+    "highlight.js": "7.3.x",
+    "bash-color": "0.0.x"
+  },
+  "devDependencies": {
+    "nodemon": "0.7.x",
+    "express-error": "0.0.x"
+  },
+  "scripts": {
+    "preinstall": ". preinstall.sh",
+    "prestart": ". shim.sh enable",
+    "start": "nodemon -e '.coffee|.styl' -x 'make'",
+    "poststart": ". shim.sh disable"
+  }
+}

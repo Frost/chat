@@ -1,0 +1,21 @@
+extends layout
+
+append scripts
+  script(src="/javascript/client.js")
+
+block content
+  article
+    section
+      include ../README.md
+    section
+      nav
+        for room in rooms
+          a(href="##{room.name}") #{room.name}
+    section
+      ul#message
+        li#template
+          span.at 20:23
+          span.by Max
+          span.msg Hallå Världen
+      form#chat
+        input
