@@ -21,8 +21,7 @@ $ ->
 
     $(window).scrollTop($chat.offset().top)
 
-
-  socket = io.connect "10.0.1.71:3000"
+  socket = do io.connect 
   socket.on "message", appendMessage
 
   $("#chat").on "submit", (event) ->
@@ -35,11 +34,9 @@ $ ->
       at: new Date
 
     socket.emit "message", data
-
     return false
 
   $handle.on "change", (event) ->
     user =
       name: getHandle()
-    console.log user
     socket.emit "set", user
